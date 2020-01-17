@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+        <title>Registration Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="C:\Users\jasveer\Documents\NetBeansProjects\TestApp\web\resource\css\myStyle.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="../resource/js.bootstrap.min.js"></script>
+        <link rel="stylesheet" href="myStyle.css">
+        <style>
+            h3{
+                color:yellowgreen;
+            }
+            h2{
+                color:blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container w-50">
+            <div class="header">
+                <br><br>
+                <h2 align="center">Apply for as a Employee</h2>
+            </div>
+            <div class="container pt-1 border border-info rounded-sm">
+                <h3>Employee Personal Details</h3>
+                <hr>
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="fname">First Name</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="fname" placeholder="First Name" required></div>
+                        <div class="col-sm-3 text-primary"><label for="lname">Last Name</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="lname" placeholder="Last Name" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="fathername">Father Name</label></div>
+                        <div class="col-sm-3"><input type="text" name="fathername" class="form-control" placeholder="Father's Name" required></div>
+                        <div class="col-sm-3 text-primary"><label for="gender">Gender</label></div>
+                        <div class="col-sm-3"><select class="browser-default custom-select">
+                                <option selected >Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="dob">Date of Birth</label></div>
+                        <div class="col-sm-3"><input type="date" class="form-control" name="dob" placeholder="01-05-1999" required></div>
+                        <div class="col-sm-3 text-primary"><label for="adhar">Adhar Card Number</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="adhar" ></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="fpswd">Password</label></div>
+                        <div class="col-sm-3"><input type="password" name="fpswd" class="form-control" required></div>
+                        <div class="col-sm-3 text-primary"><label for="lpswd">Confirm Password</label></div>
+                        <div class="col-sm-3"><input type="password" name="lpswd" class="form-control" required></div>
+                    </div>
+                </div>
+            </div> 
+            <div class="container pt-1 border border-info rounded-sm">
+                <h3>Employee Contact Details</h3>
+                <hr>
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="mobilenumber">Mobile Number</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="mobilenumber" placeholder="+91 800663XXXX" required></div>
+                        <div class="col-sm-3 text-primary"><label for="email">E Mail Address</label></div>
+                        <div class="col-sm-3"><input type="email" class="form-control" name="email" placeholder="anything@something.com" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="altmobilenumber">Alternate Mobile Number</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="altmobilenumber" placeholder="+91 800663XXXX" required></div>
+                        <div class="col-sm-3 text-primary"><label for="fbid">Facebook Address</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="fbid" placeholder="www.facebook.com/sthjsy" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="peraddress">Permanent Address</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="peraddress" placeholder="E.g Mumbai, Maharashtra" required></div>
+                        <div class="col-sm-3 text-primary"><label for="curaddress">Current Address</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="curadress" placeholder="E.g New Delhi" required></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-1 border border-info rounded-sm">
+                <h3>Employee Previous Records</h3>
+                <hr>
+                <div class="jumbotron">
+                <div class="row">
+                    <div class="col-sm-3 text-primary"><label for="yoe">Year of Experience</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="yoe" placeholder="5" required></div>
+                    <div class="col-sm-3 text-primary"><label for="lCompany">Last Company</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="lcompany" placeholder="QA Infotech" required></div>
+                </div>
+                </div>
+            </div>
+                <div class="container pt-1 border border-info rounded-sm">
+                     <h3>Education Details</h3>
+                     <hr>
+                     <div class="jumbotron">
+                    <div class="row">
+                    <div class="col-sm-3 text-primary"><label for="gcy">Graduate Completion Year</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="gcy" placeholder="2015" required></div>
+                    <div class="col-sm-3 text-primary"><label for="gcn">Graduate's College Name</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="gcn" placeholder="RKGIT Ghaziabad" required></div>
+                </div>
+                    <div class="row">
+                    <div class="col-sm-3 text-primary"><label for="yoe">12th Completion Year</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="12th" placeholder="2011" required></div>
+                    <div class="col-sm-3 text-primary"><label for="10th">10th Completion Year</label></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="10th" placeholder="2009" required></div>
+                </div>
+            </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 text-success" >
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                    <div class="col-sm-6 text-danger">
+                        <button type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
