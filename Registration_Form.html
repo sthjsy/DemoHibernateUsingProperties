@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+        h3{
+            color:yellowgreen;
+        }
+        h2{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
     
-        <title>Registration Page</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="C:\Users\jasveer\Documents\NetBeansProjects\TestApp\web\resource\css\myStyle.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <script src="../resource/js.bootstrap.min.js"></script>
-        <link rel="stylesheet" href="myStyle.css">
-        <style>
-            h3{
-                color:yellowgreen;
-            }
-            h2{
-                color:blue;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container w-50">
-            <div class="header">
-                <br><br>
-                <h2 align="center">Apply for as a Employee</h2>
-            </div>
+    <div class="container-fluid mt-2">
+        <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Logo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Signup</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          </ul>
+        </nav>
+    </div>
+    <!--Login page-->
+    <div class="container">
+        <h3 class="text-capitalize text-center mt-2">Registration Page</h3>
+        <hr class="w-25 mx-auto pt-2 pb-2">
+    </div>
+    <div class="container">
             <div class="container pt-1 border border-info rounded-sm">
                 <h3>Employee Personal Details</h3>
                 <hr>
@@ -77,11 +95,20 @@
                         <div class="col-sm-3 text-primary"><label for="fbid">Facebook Address</label></div>
                         <div class="col-sm-3"><input type="text" class="form-control" name="fbid" placeholder="www.facebook.com/sthjsy" required></div>
                     </div>
+                    <h3 class="">Permanent Address</h3>
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="peraddress">Permanent Address</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="peraddress" placeholder="E.g Mumbai, Maharashtra" required></div>
-                        <div class="col-sm-3 text-primary"><label for="curaddress">Current Address</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="curadress" placeholder="E.g New Delhi" required></div>
+                        <div class="col-sm-3 text-primary"><label for="peraddress">First Line</label></div>
+                        <div class="col-sm-9"><input type="text" class="form-control" name="fline" placeholder="E.g Mumbai, Maharashtra" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="curaddress">Second Line</label></div>
+                        <div class="col-sm-9"><input type="text" class="form-control" name="sline" placeholder="E.g New Delhi" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="district">District</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="district" placeholder="www.facebook.com/sthjsy" required></div>
+                        <div class="col-sm-3 text-primary"><label for="state">State</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="state" placeholder="www.facebook.com/sthjsy" required></div>
                     </div>
                 </div>
             </div>
