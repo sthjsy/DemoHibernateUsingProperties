@@ -165,15 +165,15 @@
                         <tbody id="EduTBody">
                             <tr>
                                 <td>1</td>
-                                <td class="text-primary"><input type="text" name="Uni_Name_0" class="form-control"></td>
-                                <td class="text-primary"><input type="text" name="Uni_Course_0" class="form-control"></td>
-                                <td class="text-primary"><input type="text" name="Uni_Board_0" class="form-control"></td>
-                                <td class="text-primary"><input type="text" name="Uni_yop_0" class="form-control"></td>
+                                <td class="text-primary"><input id="name" type="text" name="Uni_Name_0" class="form-control"></td>
+                                <td class="text-primary"><input id="course" type="text" name="Uni_Course_0" class="form-control"></td>
+                                <td class="text-primary"><input id="board" type="text" name="Uni_Board_0" class="form-control"></td>
+                                <td class="text-primary"><input id="yop" type="text" name="Uni_yop_0" class="form-control"></td>
                                 <td></td>
                             </tr>
                         </tbody>
                     </table>
-                    <input type="submit" class="btn btn-primary text-center" value="Submit" onclick="insertData();">
+                    <input type="submit" class="btn btn-primary text-center" value="submitdata" onclick="insertData();">
                 </div>
             </div>
         </div> 
@@ -199,10 +199,9 @@
             }
             function insertData()
             {
+                
                 var data = {
-                    foo: "fooValue",
-                    bar: "barValue",
-                    baz: "bazValue"
+                    
                 };
 
                 $.ajax({
@@ -215,6 +214,30 @@
                     }
                 });
             }
+            $(document).ready(function ()
+            {
+               $("submitdata").click(function ()
+               {
+                  alert("Chacha");
+                  $.ajax(
+                          {
+                             url:"newjsp.jsp",
+                            type:"post",
+                            data:
+                                    {
+                                        name:$("#name").val(),
+                                        course:$("#course").val(),
+                                        board:$("#board").val(),
+                                        yop:$("#yop").val(),
+                                        success : function (data)
+                                        {
+                                            alert(data);
+                                    }
+                                    }
+                          });
+               });
+            });
         </script>
+        
     </body>
 </html>
