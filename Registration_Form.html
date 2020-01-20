@@ -9,11 +9,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
   <style>
-        h3{
+        h4{
             color:yellowgreen;
         }
         h2{
             color:blue;
+        }
+        #addRow
+        {
+            float: right;
         }
     </style>
 </head>
@@ -45,20 +49,20 @@
     </div>
     <div class="container">
             <div class="container pt-1 border border-info rounded-sm">
-                <h3>Employee Personal Details</h3>
+                <h4>Employee Personal Details</h4>
                 <hr>
                 <div class="jumbotron">
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="fname">First Name</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="fname" placeholder="First Name" required></div>
-                        <div class="col-sm-3 text-primary"><label for="lname">Last Name</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="lname" placeholder="Last Name" required></div>
+                        <div class="col-sm-2 text-primary"><label for="fname">First Name</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="fname" placeholder="First Name" required></div>
+                        <div class="col-sm-2 text-primary"><label for="lname">Last Name</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="lname" placeholder="Last Name" required></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="fathername">Father Name</label></div>
-                        <div class="col-sm-3"><input type="text" name="fathername" class="form-control" placeholder="Father's Name" required></div>
-                        <div class="col-sm-3 text-primary"><label for="gender">Gender</label></div>
-                        <div class="col-sm-3"><select class="browser-default custom-select">
+                        <div class="col-sm-2 text-primary"><label for="fathername">Father Name</label></div>
+                        <div class="col-sm-4"><input type="text" name="fathername" class="form-control" placeholder="Father's Name" required></div>
+                        <div class="col-sm-2 text-primary"><label for="gender">Gender</label></div>
+                        <div class="col-sm-4"><select class="browser-default custom-select">
                                 <option selected >Select Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -66,155 +70,132 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="dob">Date of Birth</label></div>
-                        <div class="col-sm-3"><input type="date" class="form-control" name="dob" placeholder="01-05-1999" required></div>
-                        <div class="col-sm-3 text-primary"><label for="adhar">Adhar Card Number</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="adhar" ></div>
+                        <div class="col-sm-2 text-primary"><label for="dob">Date of Birth</label></div>
+                        <div class="col-sm-4"><input type="date" class="form-control" name="dob" placeholder="" required></div>
+                        <div class="col-sm-2 text-primary"><label for="adhar">Adhar Card Number</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="adhar" ></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="fpswd">Password</label></div>
-                        <div class="col-sm-3"><input type="password" name="fpswd" class="form-control" required></div>
-                        <div class="col-sm-3 text-primary"><label for="lpswd">Confirm Password</label></div>
-                        <div class="col-sm-3"><input type="password" name="lpswd" class="form-control" required></div>
+                        <div class="col-sm-2 text-primary"><label for="fpswd">Password</label></div>
+                        <div class="col-sm-4"><input type="password" name="fpswd" class="form-control" required></div>
+                        <div class="col-sm-2 text-primary"><label for="lpswd">Confirm Password</label></div>
+                        <div class="col-sm-4"><input type="password" name="lpswd" class="form-control" required></div>
                     </div>
                 </div>
             </div> 
             <div class="container pt-1 border border-info rounded-sm">
-                <h3>Employee Contact Details</h3>
+                <h4>Employee Contact Details</h4>
                 <hr>
                 <div class="jumbotron">
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="mobilenumber">Mobile Number</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="mobilenumber" placeholder="+91 800663XXXX" required></div>
-                        <div class="col-sm-3 text-primary"><label for="email">E Mail Address</label></div>
-                        <div class="col-sm-3"><input type="email" class="form-control" name="email" placeholder="anything@something.com" required></div>
+                        <div class="col-sm-2 text-primary"><label for="mobilenumber">Mobile Number</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="mobilenumber" placeholder="" required></div>
+                        <div class="col-sm-2 text-primary"><label for="email">E Mail Address</label></div>
+                        <div class="col-sm-4"><input type="email" class="form-control" name="email" placeholder="" required></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-3 text-primary"><label for="altmobilenumber">Alternate Mobile Number</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="altmobilenumber" placeholder="+91 800663XXXX" required></div>
-                        <div class="col-sm-3 text-primary"><label for="fbid">Facebook Address</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="fbid" placeholder="www.facebook.com/sthjsy" required></div>
+                        <div class="col-sm-2 text-primary"><label for="altmobilenumber">Alternate Mobile Number</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="altmobilenumber" placeholder="" required></div>
+                        <div class="col-sm-2 text-primary"><label for="fbid">Facebook Address</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="fbid" placeholder="" required></div>
                     </div>
-                    <h3 class="">Permanent Address</h3>
+                    <h4 class="">Permanent Address</h4>
+                    <hr class="w-25 mx-1 pt-2 pb-2">
                     <div class="row">
                         <div class="col-sm-3 text-primary"><label for="peraddress">First Line</label></div>
-                        <div class="col-sm-9"><input type="text" class="form-control" name="fline" placeholder="E.g Mumbai, Maharashtra" required></div>
+                        <div class="col-sm-9"><input type="text" class="form-control" name="fline" placeholder="" required></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 text-primary"><label for="curaddress">Second Line</label></div>
-                        <div class="col-sm-9"><input type="text" class="form-control" name="sline" placeholder="E.g New Delhi" required></div>
+                        <div class="col-sm-9"><input type="text" class="form-control" name="sline" placeholder="" required></div>
                     </div>
                     <div class="row">
                         <div class="col-sm-3 text-primary"><label for="district">District</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="district" placeholder="www.facebook.com/sthjsy" required></div>
-                        <div class="col-sm-3 text-primary"><label for="state">State</label></div>
-                        <div class="col-sm-3"><input type="text" class="form-control" name="state" placeholder="www.facebook.com/sthjsy" required></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="district" placeholder="" required></div>
+                        <div class="col-sm-2 text-primary"><label for="state">State</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="state" placeholder="" required></div>
+                    </div>
+                    <h4 class="">Current Address</h4>
+                    <hr class="w-25 ml-1 pt-2 pb-2">
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="peraddress">Street</label></div>
+                        <div class="col-sm-6"><input type="text" class="form-control" name="fline" placeholder="" required></div>
+                        <div class="col-sm-3 text-primary"><label for="pincode">Pin Code</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="curaddress">Second Line</label></div>
+                        <div class="col-sm-6"><input type="text" class="form-control" name="sline" placeholder="" required></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="pincode" placeholder="" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 text-primary"><label for="district">City</label></div>
+                        <div class="col-sm-3"><input type="text" class="form-control" name="district" placeholder="" required></div>
+                        <div class="col-sm-2 text-primary"><label for="state">State</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="state" placeholder="" required></div>
                     </div>
                 </div>
             </div>
             <div class="container pt-1 border border-info rounded-sm">
-                <h3>Employee Previous Records</h3>
+                <h4>Employee Previous Records</h4>
                 <hr>
                 <div class="jumbotron">
                 <div class="row">
                     <div class="col-sm-3 text-primary"><label for="yoe">Year of Experience</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="yoe" placeholder="5" required></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="yoe" placeholder="" required></div>
                     <div class="col-sm-3 text-primary"><label for="lCompany">Last Company</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="lcompany" placeholder="QA Infotech" required></div>
+                    <div class="col-sm-3"><input type="text" class="form-control" name="lcompany" placeholder="" required></div>
                 </div>
                 </div>
             </div>
-                <div class="container pt-1 border border-info rounded-sm">
-                     <h3>Education Details</h3>
-                     <hr>
-                     <div class="jumbotron">
-                    <div class="row">
-                    <div class="col-sm-3 text-primary"><label for="gcy">Graduate Completion Year</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="gcy" placeholder="2015" required></div>
-                    <div class="col-sm-3 text-primary"><label for="gcn">Graduate's College Name</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="gcn" placeholder="RKGIT Ghaziabad" required></div>
-                </div>
-                    <div class="row">
-                    <div class="col-sm-3 text-primary"><label for="yoe">12th Completion Year</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="12th" placeholder="2011" required></div>
-                    <div class="col-sm-3 text-primary"><label for="10th">10th Completion Year</label></div>
-                    <div class="col-sm-3"><input type="text" class="form-control" name="10th" placeholder="2009" required></div>
+            <div class="container pt-1 border border-info rounded-sm">
+            <hr>
+                <div class="jumbotron">
+                    <h4>Education Details <input type="button" class="btn btn-primary" id="addRow" onclick="addEduRow();" value="ADD"></h4>
+                    <table class="table table-bordered" id="eduTable">
+                        <thead>
+                        <tr>
+                            <td>S.No</td>
+                            <td>University Name</td>
+                            <td>Course</td>
+                            <td>Board</td>
+                            <td>Year of Passing</td>
+                            <td></td>
+                        </tr>
+                        </thead>
+                        <tbody id="EduTBody">
+                        <tr>
+                            <td>1</td>
+                            <td><input type="text" name="Uni_Name_0" class="form-control"></td>
+                            <td><input type="text" name="Uni_Course_0" class="form-control"></td>
+                            <td><input type="text" name="Uni_Board_0" class="form-control"></td>
+                            <td><input type="text" name="Uni_yop_0" class="form-control"></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <input type="submit" class="btn btn-primary text-center" value="Submit">
                 </div>
             </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 text-success" >
-                        <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
-                    <div class="col-sm-6 text-danger">
-                        <button type="button" class="btn btn-danger">Cancel</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> 
+    <script>
+        var count=1;
+        function addEduRow() {
+            var html="<tr>"+
+                    "<td>"+(count+1)+"</td>"+
+                    "<td><input type='text' name='Uni_Name_"+(count+1)+"' class='form-control'></td>"+    
+                    "<td><input type='text' name='Uni_Course_"+(count+1)+"' class='form-control'></td>"+    
+                    "<td><input type='text' name='Uni_Board_"+(count+1)+"' class='form-control'></td>"+    
+                    "<td><input type='text' name='Uni_yop_"+(count+1)+"' class='form-control'></td>"+    
+                    "<td><input type='button' class='btn btn-primary' id='' onclick='removeRow(id);' value='Remove'></td>"+    
+                "</tr>";
+        $(eduTable).append(html);
+        count++;
+        }
+        function removeRow(id)
+        {
+
+            $(eduTable).closest().remove(id);
+        }
+    </script>
     </body>
 </html>
-<!---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <!-- Navbar -->
-    
-    <div class="container-fluid mt-2">
-        <nav class="navbar navbar-expand-sm bg-success navbar-dark">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Logo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Signup</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          </ul>
-        </nav>
-    </div>
-    <!--Login page-->
-    <div class="container">
-        <h3 class="text-capitalize text-center mt-2">Log in Page</h3>
-        <hr class="w-25 mx-auto pt-2 pb-2">
-    </div>
-<div class="container-sm w-50 p-3 my-3 bg-dark text-white border border-info rounded-sm">
-        <div class="row">
-            <div class="col-sm-6">
-                <label for="email">Enter Email Address</label>
-            </div>
-            <div class="col-sm-6">
-                <input type="email" name="email" required placeholder="abs@gmail.com">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <label for="pswd">Enter Password</label>
-            </div>
-            <div class="col-sm-6">
-                <input type="password" name="pswd">
-            </div>
-        </div>
-        <div class="rol col-12 my-3 text-center">
-            <button type="button" class="btn btn-primary">Login</button>
-            </div>
-        </div>
-        
-    </body>
-</html>
--->
