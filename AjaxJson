@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Bootstrap Example</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <script src="jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    </head>
+    <body>
+        <!-- Navbar -->
+
+        <div class="container-fluid mt-2">
+            <nav class="navbar navbar-expand-sm bg-success navbar-dark">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Logo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container">
+            <div class="container pt-1 border border-info rounded-sm mt-4">
+                <h4>Employee Personal Details</h4>
+                <hr>
+                <div class="jumbotron mt-4">
+                    <div class="row">
+                        <div class="col-sm-2 text-primary"><label for="fname">First Name</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control singleData" id="fname" name="fname" placeholder="First Name" required></div>
+                        <div class="col-sm-2 text-primary"><label for="lname">Last Name</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control singleData" id="lname" name="lname" placeholder="Last Name" required></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 text-primary"><label for="dob">Date Of Birth</label></div>
+                        <div class="col-sm-4"><input type="date" id="dob" name="dob" class="form-control singleData" required></div>
+                        <div class="col-sm-2 text-primary"><label for="gender">Gender</label></div>
+                        <div class="col-sm-4"><select class="browser-default custom-select singleData" id="gender">
+                                <option selected >Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2 text-primary"><label for="mno">Mobile Number</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control singleData" id="mno" name="mno" required></div>
+                        <div class="col-sm-2 text-primary"><label for="lname">E Mail</label></div>
+                        <div class="col-sm-4"><input type="text" class="form-control singleData" id="email" name="email" required></div>
+                    </div>
+                </div>
+                <div class="row ml-5">
+                    <div class="col-sm-2 text-primary"><label for="output">Output</label></div>
+                    <div class="col-sm-8"><input type="text" class="form-control singleData" id="output" name="output"></div>
+                    <div class="col-sm-2"></div>
+                </div>
+                <div class="row mt-4 mb-4 ml-4">
+                    <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Submit" onclick="insertData();"></div>
+                    <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Search" onclick="searchData();"></div>
+                    <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" id="showAll" value="ShowAll" onclick="showAll();"></div>
+                    <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="updateData" onclick="UpdateData();"></div>
+                    <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Delete" onclick="deleteData();"></div>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            function insertData()
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "Controller",
+                    data:
+                            {
+                                callflag: "insert",
+                                fname: $("#fname").val(),
+                                lname: $("#lname").val(),
+                                dob: $("#dob").val(),
+                                mno: $("#mno").val(),
+                                email: $("#email").val(),
+                                gender: $("#gender").val(),
+                            },
+                    success: function (response) {
+                        alert(response);
+                        $("#output").val(response);
+                    }
+                });
+            }
+//            $(document).ready(function ()
+//            {
+//                $("#showAll").click(function ()
+//                {
+//                    alert("Button Click");
+//                    $.ajax(
+//                            {
+//                                type: 'POST',
+//                                url: "Controller"
+//                                data: {
+//                                        callflag:"showAll",
+//                            },
+//                            success: function (response) {
+//                                for(int i=0;i<response.length;i++)
+//                            {
+//                                document.write(" "+response[i]["firstname"]+" "+response[i]["lasttname"]+" "+response[i]["dob"]+" "+response[i]["gender"]+" "+response[i]["mno"]+" "+response[i]["email"]);
+//                            }
+//                            }
+//                        
+//                            }
+//                            );
+//                });
+//                
+//            });
+            function showAll()
+            {
+                debugger;
+                alert("All Done");
+                $.ajax({
+                    type: 'POST',
+                    url: "Controller",
+                    data: {
+                        callflag: "showAll"
+                    },
+                    success: function (response) {
+                        debugger;
+                        console.log(response);
+                        var data = JSON.parse(response);
+                        //$("#output").val(response);
+                        for (var i = 0; i < data.length; i++) {
+                            debugger;
+                            var html = "<tr id='" + data[i].recordid + "'>" +
+                                    "<td>" + data[i].firstname + "</td>" +
+                                    "<td>" + data[i].lasttname + "</td>" +
+                                    "<td>" + data[i].dob + "</td>" +
+                                    "<td>" + data[i].gender + "</td>" +
+                                    "<td>" + data[i].mno + "</td>" +
+                                    "<td>" + data[i].email + "</td>" +
+                                    "</tr>";
+                            $("#dgfd").append(html);
+
+//                            document.write(" " + response[i]["firstname"] + " " + response[i]["lasttname"] + " " + response[i]["dob"] + " " + response[i]["gender"] + " " + response[i]["mno"] + " " + response[i]["email"]);
+                        }
+
+                    }
+                });
+            }
+            function searchData()
+            {
+                $.ajax(
+                        {
+                            type: 'POST',
+                            url: "Controller",
+                            data: {
+                                callflag: "search"
+                            },
+                            success: function (response) {
+                                $("#output").val(response);
+                                alert(response);
+                            }
+                        });
+            }
+            function UpdateData()
+            {
+                $.ajax(
+                        {
+                            type: 'POST',
+                            url: "Controller",
+                            data: {
+                                callflag: "update",
+                                fname: $("#fname").val(),
+                                lname: $("#lname").val(),
+                                dob: $("#dob").val(),
+                                mno: $("#mno").val(),
+                                email: $("#email").val(),
+                                gender: $("#gender").val(),
+                            },
+                            success: function (response) {
+                                $("#output").val(response);
+                                alert(response);
+                            }
+                        });
+            }
+            function deleteData()
+            {
+                $.ajax(
+                        {
+                            type: 'POST',
+                            url: "Controller",
+                            data: {
+                                callflag: "delete",
+                                fname: $("#fname").val()
+                            },
+                            success: function (response) {
+                                $("#output").val(response);
+                                alert(response);
+                            }
+                        });
+            }
+        </script>
+    </body>
+</html>
+====================================================================
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package mypack;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import dao.MyConnection;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Controller extends HttpServlet {
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            String callflag = request.getParameter("callflag");
+            String fname = request.getParameter("fname");
+            String lname = request.getParameter("lname");
+            String gender = request.getParameter("gender");
+            String email = request.getParameter("email");
+            String mno = request.getParameter("mno");
+            String dob = request.getParameter("dob");
+            System.out.println(callflag);
+
+            //Connection
+            Connection conn = MyConnection.createConnection();
+            PreparedStatement pst;
+            ResultSet rs;
+
+            if (callflag.equals("insert")) {
+                pst = conn.prepareStatement("insert into JASVEER_YADAV_EMP values(?,?,?,?,?,?)");
+                pst.setString(1, fname);
+                pst.setString(2, lname);
+                pst.setString(3, dob);
+                pst.setString(4, gender);
+                pst.setString(5, mno);
+                pst.setString(6, email);
+                out.print(pst.executeUpdate() + " Record Added");
+            } else if (callflag.equals("delete")) {
+
+            } else if (callflag.equals("update")) {
+
+            } else if (callflag.equals("search")) {
+
+            } else if (callflag.equals("showAll")) {
+                System.out.println("inside method");
+//                Handler handler = new Handler();
+//                List<List> list = handler.showAll();
+//                JsonArray ja = new JsonArray();
+//                Iterator<List> itr = list.iterator();
+//                while (itr.hasNext()) {
+//                    List lst = itr.next();
+//                    JsonObject jo = new JsonObject();
+//                    Iterator<String> itr1 = lst.iterator();
+//                    while (itr.hasNext()) {
+//                        jo.addProperty("firstname", itr1.next().toString());
+//                        jo.addProperty("lasttname", itr1.next().toString());
+//                        jo.addProperty("dob", itr1.next().toString());
+//                        jo.addProperty("gender", itr1.next().toString());
+//                        jo.addProperty("mno", itr1.next().toString());
+//                        jo.addProperty("email", itr1.next().toString());
+//                    }
+//                    ja.add(jo);
+//                }
+//                out.print(ja);
+//                System.out.println(ja);
+//                
+//                String result = null;
+//                
+                pst = conn.prepareStatement("select * from JASVEER_YADAV_EMP");
+                rs = pst.executeQuery();
+                JsonArray ja = new JsonArray();
+                //List<List> list = new ArrayList<>();
+                while (rs.next()) {
+                    JsonObject jo = new JsonObject();
+                    jo.addProperty("firstname", rs.getString(1));
+                    jo.addProperty("lasttname", rs.getString(2));
+                    jo.addProperty("dob", rs.getString(3));
+                    jo.addProperty("gender", rs.getString(4));
+                    jo.addProperty("mno", rs.getString(5));
+                    jo.addProperty("email", rs.getString(6));
+                    ja.add(jo);
+//                List<String> lst=new ArrayList<>();
+//                lst.add(rs.getString(1));
+//                lst.add(rs.getString(2));
+//                lst.add(rs.getString(3));
+//                lst.add(rs.getString(4));
+//                lst.add(rs.getString(5));
+//                lst.add(rs.getString(6));
+//                list.add(list);
+                    //result=result+rs.getString(1)+" "+rs.getString(2)+" "+rs.getString(3)+" "+rs.getString(4)+" "+rs.getString(5)+" "+rs.getString(6)+"\n";
+                    //}
+                    // out.print(list);
+
+                }
+                System.out.println("Data Return :: " + new Gson().toJson(ja));
+                out.print(ja);
+
+            }
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
+-----------------------------------------------------------
