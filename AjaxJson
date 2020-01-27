@@ -1,4 +1,3 @@
-index================================
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,11 +58,16 @@ index================================
                         <div class="col-sm-2 text-primary"><label for="lname">E Mail</label></div>
                         <div class="col-sm-4"><input type="text" class="form-control singleData" id="email" name="email" required></div>
                     </div>
+                    <div class="row" hidden>
+                        <div class="col-sm-4"><input type="text" class="form-control singleData" id="uniqueID" name="uniqueID" required></div>
+                    </div>
                 </div>
                 <div class="jumbotron" id="DataTable" hidden>
                     <table class="table table-bordered" id="eduTable">
                         <thead>
                             <tr class="text-center">
+                                <th hidden>Unique ID</th>
+                                <th>Sr No</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Date of Birth</th>
@@ -81,13 +85,14 @@ index================================
                     <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Submit" onclick="insertData();"></div>
                     <!--<div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Search" onclick="searchData();"></div>-->
                     <div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" id="showAll" value="Show All Records" onclick="showAll();"></div>
-                    <!--<div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="updateData" onclick="UpdateData();"></div>-->
+                    <div class="col-sm-2 text-center"><input type="submit" hidden class="btn btn-primary text-center" id="UpdateBtn" value="updateData" onclick="updateData(id);"></div>
                     <!--<div class="col-sm-2 text-center"><input type="submit" class="btn btn-primary text-center" value="Delete" onclick="deleteData();"></div>-->
 
                 </div>
             </div>
         </div>
         <script>
+
             function insertData()
             {
                 $.ajax({
@@ -105,10 +110,11 @@ index================================
                             },
                     success: function (response) {
                         alert(response);
-                        $("#output").val(response);
+
                     }
                 });
             }
+
 
             function showAll() {
                 $("#EduTBody").html("");
@@ -126,64 +132,63 @@ index================================
                         var data = JSON.parse(response);
                         for (var i = 0; i < data.length; i++) {
                             debugger;
-                            var html = "<tr id='" + data[i].id + "'>"
-                                    + "<td class='Editdata'>" + data[i].firstname + "</td>"
-                                    + "<td>" + data[i].lasttname + "</td>"
-                                    + "<td>" + data[i].dob + "</td>"
-                                    + "<td>" + data[i].gender + "</td>"
-                                    + "<td>" + data[i].mno + "</td>"
-                                    + "<td>" + data[i].email + "</td>"
-                                    + "<td><input type='button' class='btn btn-primary text-center' value='Edit'  id='editID_" + data[i].id + "' onclick='searchData(id);'></td>"
+                            var id = data[i].id;
+                            var html = "<tr  id='" + data[i].id + "'>"
+                                    + "<td hidden id='uniqueID" + id + "'>" + data[i].id + "</td>"
+                                    + "<td>" + (i + 1) + "</td>"
+                                    + "<td id='fname" + id + "'>" + data[i].firstname + "</td>"
+                                    + "<td id='lname" + id + "'>" + data[i].lasttname + "</td>"
+                                    + "<td id='dob" + id + "'>" + data[i].dob + "</td>"
+                                    + "<td id='gender" + id + "'>" + data[i].gender + "</td>"
+                                    + "<td id='mno" + id + "'>" + data[i].mno + "</td>"
+                                    + "<td id='email" + id + "'>" + data[i].email + "</td>"
+                                    + "<td><input type='button' class='btn btn-primary text-center' value='Edit'  id='EditId_" + data[i].id + "' onclick='editData(id);'></td>"
                                     + "<td><input type='button' class='btn btn-primary text-center' value='Remove' id='delID_" + data[i].id + "' onclick='RemoveData(id);'></td>"
                                     + "</tr>";
+                            //'delID_'editID_
                             $("#EduTBody").append(html);
                         }
                     }
                 });
             }
-            function searchData(id)
-            {
-                $.ajax(
-                        {
-                            type: 'POST',
-                            url: "Controller",
-                            data: {
-                                callflag: "search",
-                                fname: id,
-                            },
-                            success: function (response) {
-                                var data = JSON.parse(response);
-                                for (var i = 0; i < data.length; i++)
-                                {
-                                    $("#fname").val(data[i].firstname);
-                                    $("#lname").val(data[i].lasttname);
-                                    $("#dob").val(data[i].dob);
-                                    $("#gender").val(data[i].gender);
-                                    $("#mno").val(data[i].mno);
-                                    $("#email").val(data[i].email);
-                                }
-                            }
-                        });
-            }
-            function UpdateData(id) {
+            function editData(id) {
+                debugger;
+                alert(id);
                 var id1 = $("#" + id).closest("tr").attr("id");
+                //alert(idl);
+                $("#uniqueID").val($("#uniqueID" + id1).text());
+                $("#fname").val($("#fname" + id1).text());
+                $("#lname").val($("#lname" + id1).text());
+                $("#dob").val($("#dob" + id1).text());
+                $("#gender").val($("#gender" + id1).text());
+                $("#mno").val($("#mno" + id1).text());
+                $("#email").val($("#email" + id1).text());
+                $("#UpdateBtn").removeAttr("hidden");
+                $("#UpdateBtn").attr("UniqueID", id1);
+
+
+            }
+            function updateData(id) {
+                alert("Update Method");
                 $.ajax(
                         {
                             type: 'POST',
                             url: "Controller",
                             data: {
                                 callflag: "update",
-                                uniqueID: id1,
                                 fname: $("#fname").val(),
                                 lname: $("#lname").val(),
                                 dob: $("#dob").val(),
                                 mno: $("#mno").val(),
                                 email: $("#email").val(),
-                                gender: $("#gender").val()
+                                gender: $("#gender").val(),
+                                uniqueID: $("#uniqueID").val()
                             },
                             success: function (response) {
-                                $("#output").val(response);
                                 alert(response);
+                                $("#fname").val("");
+                                showAll();
+
                             }
                         });
             }
@@ -198,7 +203,7 @@ index================================
                     url: "Controller",
                     data: {
                         callflag: "delete",
-                        recordid: id1,
+                        recordid: id1
                     },
                     success: function (response) {
                         debugger;
@@ -210,7 +215,7 @@ index================================
         </script>
     </body>
 </html>
-------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -243,7 +248,8 @@ public class Controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        PrintWriter out = response.getWriter();
+        try {
 
             String callflag = request.getParameter("callflag");
             //Connection
@@ -271,21 +277,38 @@ public class Controller extends HttpServlet {
                 System.out.print(result + " Record Deleted");
             } //Update Record
             else if (callflag.equals("update")) {
+                System.out.println(callflag);
+                List<String> list = new ArrayList<>();
+                System.out.println(request.getParameter("fname"));
+                int id = Integer.parseInt(request.getParameter("uniqueID"));
+                System.out.println(Integer.parseInt(request.getParameter("uniqueID")));
+                list.add(request.getParameter("fname"));
+                System.out.println(request.getParameter("fname"));
+                list.add(request.getParameter("lname"));
+                list.add(request.getParameter("dob"));
+                list.add(request.getParameter("gender"));
+                list.add(request.getParameter("mno"));
+                list.add(request.getParameter("email"));
+                list.add(request.getParameter("UpdateBtn"));
+                out.print(handler.updateData(list, id));
 
             } else if (callflag.equals("search")) {
-                
-                JsonArray ja=handler.searchData(request.getParameter("fname"));
+                Integer id = Integer.parseInt(request.getParameter("id"));
+
+                JsonArray ja = handler.searchData(id);
                 out.print(ja);
                 System.out.println(ja);
-                
+                out.print("Search Method " + id);
 
             } //Show All Record 
             else if (callflag.equals("showAll")) {
                 System.out.println("inside method");
-                JsonArray ja=handler.showAll();
+                JsonArray ja = handler.showAll();
                 System.out.println("Data Return :: " + new Gson().toJson(ja));
                 out.print(ja);
             }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -341,7 +364,7 @@ public class Controller extends HttpServlet {
     }// </editor-fold>
 
 }
---------------------------------------------------------------------
+---------------------------------------------------------------------------
 package mypack;
 
 import com.google.gson.Gson;
@@ -401,9 +424,9 @@ public class Handler {
         return pst.executeUpdate();
     }
 
-    public JsonArray searchData(String firstname) throws SQLException {
-        pst = conn.prepareStatement("select from JASVEER_YADAV_EMP where FIRSTNAME=?");
-        pst.setString(1, firstname);
+    public JsonArray searchData(Integer id) throws SQLException {
+        pst = conn.prepareStatement("select *from JASVEER_YADAV_EMP where ID=?");
+        pst.setInt(1, id);
         rs = pst.executeQuery();
         JsonArray ja = new JsonArray();
         while (rs.next()) {
@@ -414,22 +437,33 @@ public class Handler {
             jo.addProperty("gender", rs.getString("GENDER"));
             jo.addProperty("mno", rs.getString("MOBILENUMBER"));
             jo.addProperty("email", rs.getString("EMAIL"));
-
+            jo.addProperty("id", rs.getInt("ID"));
             ja.add(jo);
             new Gson().toJson(ja);
         }
         return ja;
     }
 
-    public String updateData(List<String> list) throws SQLException {
-        pst = conn.prepareStatement("update JASVEER_YADAV_EMP set LASTNAME=?,DATEOFBIRTH=?,GENDER=?,MOBILENUMBER=?, EMAIL=? where FIRSTNAME=?");
-        pst.setString(1, list.get(0));
-        pst.setString(2, list.get(1));
-        pst.setString(3, list.get(2));
-        pst.setString(4, list.get(3));
-        pst.setString(5, list.get(4));
-        pst.setString(6, list.get(5));
-        return pst.executeUpdate() + " Record Update";
+    public String updateData(List<String> list, int id) throws SQLException {
+        int i = 0;
+        try {
+            System.out.println("dfgfd" + id);
+            pst = conn.prepareStatement("update JASVEER_YADAV_EMP set FIRSTNAME=?, LASTNAME=?,DATEOFBIRTH=?,GENDER=?,MOBILENUMBER=?, EMAIL=? where ID=?");
+            pst.setString(1, list.get(0));
+            System.out.println("list.get(0) " + list.get(0));
+            pst.setString(2, list.get(1));
+            pst.setString(3, list.get(2));
+            pst.setString(4, list.get(3));
+            pst.setString(5, list.get(4));
+            pst.setString(6, list.get(5));
+            pst.setInt(7, id);
+            i = pst.executeUpdate();
+            System.out.println("i " + i);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return i + " Record Update";
+
     }
 
 }
